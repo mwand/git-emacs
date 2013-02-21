@@ -1,0 +1,64 @@
+sukhdeep - navneet 
+Problem set 1 - 2.rkt
+
+sukhdeep and navneet DD, templates, function names, functions, examples are different but it seems
+they both have shared tests.
+
+################################################################################################################
+
+In Diff of sukhdeep for revision 1264 and navneet for revision 1295 the following evidences are clearly visible.
+
+############################################################################################################
+Hard evidences of copied tests: 
+sukhdeep - lines 202 and 203 have a test as
+(check-equal? (load-machine -10 0)
+              (text "You have been loading worng data" 20 "red")))
+
+navneet - lines 159 and 160 have an example
+(check-equal? (load-machine -10 0)
+              (text "You have been loading worng data" 20 "red")))
+			  
+Note: "worng" is typed as "worng" by one of them which is copied by the other.
+
+############################################################################################################
+Navneet has same test suite as sukhdeep
+Both of them have the same suite same order 
+
+Navneet lines 126 - 161, sukhdeep 164-203
+(define-test-suite test-next-state
+(check-equal? (machine-next-state
+              (machine-next-state(load-machine 10 10) 200)"release")
+              (make-machine 10 10 0 0)
+              "returns next state" )
+(check-equal? (machine-next-state
+               (machine-next-state(load-machine 10 10) 200) "carrot")
+              (make-machine 10 9 70 0)
+              "returns next state ")
+(check-equal? (machine-next-state
+              (machine-next-state(load-machine 10 10) 200) "chocolate")
+              (make-machine 9 10 175 0)
+              "returns next state")
+(check-equal? (machine-next-state
+               (machine-next-state(load-machine 10 10) 50) "chocolate")
+             (text "amount is not sufficient to purchase a chocolate" 20 "red"))
+(check-equal? (machine-next-state 
+              (machine-next-state(make-machine 0 10 0 0) 200) "chocolate")
+              (text "there is no chocolate in the machine" 20 "red"))
+(check-equal? (machine-next-state
+               (machine-next-state(load-machine 10 10) 50) "carrot")
+              (text "amount is not sufficient to purchase carrot sticks" 20 "red"))
+(check-equal? (machine-next-state
+              (machine-next-state(make-machine 10 0 0 0) 200) "carrot")
+              (text "there is no carrot in the machine" 20 "red"))
+(check-equal? (load-machine 10 20) (make-machine 10 20 0 0)
+               "load the machine with the given input values")
+(check-equal? (load-machine 0 20) (make-machine 0 20 0 0)
+              "load the machine with the given input values")
+(check-equal? (load-machine 10 0) (make-machine 10 0 0 0)
+              "load the machine with the given input values")
+(check-equal? (load-machine 0 0) (make-machine 0 0 0 0)
+              "load the machine with the given input values")
+(check-equal? (load-machine -10 0)
+              (text "You have been loading worng data" 20 "red")))
+
+#######################################################################################
